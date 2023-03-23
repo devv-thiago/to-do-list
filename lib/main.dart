@@ -53,7 +53,12 @@ class MyApp extends StatelessWidget {
                             bottomRight: Radius.circular(10))),
                     child: Column(
                       children: [
-                        Text(t.title),
+                        Text(
+                          t.title,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                         Text(t.desc),
                       ],
                     ),
