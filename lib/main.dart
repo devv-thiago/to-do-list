@@ -64,7 +64,26 @@ class MyApp extends StatelessWidget {
                     ),
                   ),
                 );
-              })
+              }),
+              Card(
+                child: Container(
+                  height: 200,
+                  width: 300,
+                  decoration: BoxDecoration(
+                    color: Colors.blue[600],
+                  ),
+                  child: Column(
+                    children: [
+                      TextField(),
+                      TextField(),
+                      TextButton(
+                        onPressed: () {},
+                        child: Text("Adicionar tarefa"),
+                      )
+                    ],
+                  ),
+                ),
+              )
             ],
           ),
         ),
