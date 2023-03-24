@@ -26,9 +26,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         body: Container(
-          decoration: const BoxDecoration(
-            color: Colors.amber,
-          ),
+          margin: EdgeInsets.only(top: 50),
           child: Column(
             children: [
               ..._tasks.map((t) {
@@ -65,24 +63,59 @@ class MyApp extends StatelessWidget {
                   ),
                 );
               }),
-              Card(
-                child: Container(
-                  height: 200,
-                  width: 300,
-                  decoration: BoxDecoration(
-                    color: Colors.blue[600],
+              Column(
+                children: [
+                  Card(
+                    child: Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(
+                            color: Colors.black,
+                            width: 3,
+                            style: BorderStyle.solid,
+                          )),
+                      height: 300,
+                      width: double.infinity,
+                      margin: EdgeInsets.only(left: 10, right: 10),
+                      child: Column(
+                        children: [
+                          Container(
+                            child: TextField(
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(),
+                                labelText: 'Titulo',
+                              ),
+                            ),
+                          ),
+                          Container(
+                            child: TextField(
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(),
+                                labelText: 'Descricao',
+                              ),
+                            ),
+                          ),
+                          Container(
+                            height: 50,
+                            width: 120,
+                            color: Colors.blue[600],
+                            child: TextButton(
+                              onPressed: () {},
+                              child: const Text(
+                                "Adicionar tarefa",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
                   ),
-                  child: Column(
-                    children: [
-                      TextField(),
-                      TextField(),
-                      TextButton(
-                        onPressed: () {},
-                        child: Text("Adicionar tarefa"),
-                      )
-                    ],
-                  ),
-                ),
+                ],
               )
             ],
           ),
