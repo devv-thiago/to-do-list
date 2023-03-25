@@ -17,6 +17,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
           title: const Center(child: Text("Minhas Tarefas")),
@@ -30,6 +31,7 @@ class _MyAppState extends State<MyApp> {
         body: Container(
           height: double.infinity,
           width: double.infinity,
+          decoration: BoxDecoration(color: Color.fromRGBO(248, 244, 249, 1)),
           child: ListView(
             children: [
               Container(
