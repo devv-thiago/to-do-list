@@ -1,52 +1,68 @@
 import 'package:flutter/material.dart';
 import '../models/task.dart';
+import 'package:flutter/material.dart';
+import '../models/task.dart';
 
-class TaskList extends StatelessWidget {
+class TaskList extends StatefulWidget {
+  final List<Task> taskList;
 
-
-  late final List<Task> taskList;
-
-  TaskList(this.taskList){
-
-  }
+  const TaskList(this.taskList);
 
   @override
+  State<TaskList> createState() => _TaskListState();
+}
+
+class _TaskListState extends State<TaskList> {
+  @override
   Widget build(BuildContext context) {
-    return Column(children: [
-      ...taskList.map((t) {
-        return Card(
-          child: Container(
-            height: 100,
-            width: 300,
-            decoration: BoxDecoration(
+    return Container(
+      height: 300,
+      padding: EdgeInsets.all(10),
+      child: ListView.builder(
+        itemCount: widget.taskList.length,
+        itemBuilder: (ctx, index) {
+          //
+          final task = widget.taskList[index];
+          //
+          return Card(
+            child: Container(
+              padding: EdgeInsets.all(10),
+              decoration: BoxDecoration(
                 boxShadow: [
                   BoxShadow(
                     color: Colors.grey.withOpacity(0.5),
                     spreadRadius: 5,
                     blurRadius: 7,
-                    offset: Offset(0, 3), // changes position of shadow
+                    offset: Offset(0, 3),
                   ),
                 ],
                 color: const Color.fromRGBO(255, 255, 255, 1),
-                borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(10),
-                    topRight: Radius.circular(10),
-                    bottomLeft: Radius.circular(10),
-                    bottomRight: Radius.circular(10))),
-            child: Column(
-              children: [
-                Text(
-                  t.title,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
+                borderRadius: const BorderRadius.all(
+                  Radius.circular(10),
                 ),
-                Text(t.desc),
-              ],
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    task.title,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),
+                  ),
+                  Text(
+                    task.desc,
+                    style: TextStyle(
+                      color: Color.fromRGBO(133, 130, 131, 1),
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-        );
-      })
-    ]);
+          );
+        },
+      ),
+    );
   }
 }

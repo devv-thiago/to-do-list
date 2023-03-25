@@ -7,6 +7,7 @@ class TaskUser extends StatefulWidget {
   @override
   State<TaskUser> createState() => _TaskUserState();
 }
+//
 
 class _TaskUserState extends State<TaskUser> {
   final _tasks = [
@@ -19,12 +20,23 @@ class _TaskUserState extends State<TaskUser> {
     )
   ];
 
+  void _addTask(String titulo, String descricao) {
+    final newTask = Task(
+      title: titulo,
+      desc: descricao,
+    );
+
+    setState(() {
+      _tasks.add(newTask);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         TaskList(_tasks),
-        TaskInput(),
+        TaskInput(_addTask),
       ],
     );
   }
