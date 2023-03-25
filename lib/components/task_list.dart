@@ -6,7 +6,7 @@ import '../models/task.dart';
 class TaskList extends StatefulWidget {
   final List<Task> taskList;
 
-  const TaskList(this.taskList);
+  const TaskList(this.taskList, {super.key});
 
   @override
   State<TaskList> createState() => _TaskListState();
