@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'models/task.dart';
 import 'components/task_list.dart';
 import 'components/task_input.dart';
+import 'dart:math';
 
 void main() {
   runApp(MyApp());
@@ -26,18 +27,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePage extends State<MyHomePage> {
-  final _tasks = [
-    Task(
-        title: 'Trabalho faculdade',
-        desc: 'Realizar o trabalho de Sistemas da Informacao'),
-    Task(
-      title: 'Estudar',
-      desc: 'Estudar para provas',
-    )
-  ];
+  final List<Task> _tasks = [];
 
   _addTask(String titulo, String descricao) {
     final newTask = Task(
+      id: Random().nextDouble().toString(),
       title: titulo,
       desc: descricao,
     );
@@ -49,11 +43,17 @@ class _MyHomePage extends State<MyHomePage> {
     Navigator.of(context).pop();
   }
 
+  _deleteTask(String id) {
+    setState(() {
+      _tasks.removeWhere((tr) => id == tr.id);
+    });
+  }
+
   _openTaskInputModal(BuildContext context) {
-    showModalBottomSheet(
+    showDialog(
         context: context,
         builder: (_) {
-          return TaskInput(_addTask);
+          return AlertDialog(content: TaskInput(_addTask));
         });
   }
 
@@ -86,7 +86,7 @@ class _MyHomePage extends State<MyHomePage> {
                   children: [
                     Column(
                       children: [
-                        TaskList(_tasks),
+                        TaskList(_tasks, _deleteTask),
                       ],
                     )
                   ],

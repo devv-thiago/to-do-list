@@ -27,46 +27,54 @@ class _TaskInputState extends State<TaskInput> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 500,
-      child: Card(
-        child: Container(
-          padding: EdgeInsets.all(10),
-          child: Column(
-            children: [
-              TextField(
-                controller: tituloController,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Titulo',
-                ),
-              ),
-              SizedBox(height: 10),
-              TextField(
-                controller: descController,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Descricao',
-                ),
-              ),
-              SizedBox(height: 10),
-              Container(
-                height: 50,
-                width: 200,
-                child: ElevatedButton(
-                  onPressed: _submitInput,
-                  child: const Text(
-                    "Adicionar tarefa",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-              )
-            ],
+      height: 400,
+      width: 600,
+      padding: EdgeInsets.all(10),
+      child: Column(
+        children: [
+          TextField(
+            controller: tituloController,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              labelText: 'Titulo',
+            ),
           ),
-        ),
+          SizedBox(
+            height: 40,
+          ),
+          TextField(
+            maxLines: null,
+            maxLength: null,
+            controller: descController,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              labelText: 'Descricao',
+            ),
+            textAlign: TextAlign.start,
+          ),
+          SizedBox(
+            height: 40,
+          ),
+          Container(
+            height: 50,
+            width: 200,
+            child: ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor:
+                    MaterialStatePropertyAll(Color.fromRGBO(126, 126, 242, 1)),
+              ),
+              onPressed: _submitInput,
+              child: const Text(
+                "Adicionar tarefa",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          )
+        ],
       ),
     );
   }
