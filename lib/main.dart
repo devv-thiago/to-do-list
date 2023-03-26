@@ -8,11 +8,11 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: MyHomePage(),
     );
@@ -45,12 +45,14 @@ class _MyHomePage extends State<MyHomePage> {
     setState(() {
       _tasks.add(newTask);
     });
+
+    Navigator.of(context).pop();
   }
 
   _openTaskInputModal(BuildContext context) {
     showModalBottomSheet(
         context: context,
-        builder: (Null) {
+        builder: (_) {
           return TaskInput(_addTask);
         });
   }
@@ -60,8 +62,15 @@ class _MyHomePage extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+          extendBodyBehindAppBar: true,
           appBar: AppBar(
-            title: const Center(child: Text("Minhas Tarefas")),
+            centerTitle: true,
+            shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(25.0),
+                    bottomRight: Radius.circular(25.0))),
+            backgroundColor: Color.fromRGBO(126, 126, 242, 1),
+            title: const Text("Minhas Tarefas"),
             actions: [
               IconButton(
                 onPressed: () => _openTaskInputModal(context),
@@ -70,7 +79,7 @@ class _MyHomePage extends State<MyHomePage> {
             ],
           ),
           body: Container(
-            decoration: BoxDecoration(color: Color.fromRGBO(248, 244, 249, 1)),
+            decoration: BoxDecoration(color: Color.fromRGBO(34, 34, 34, 1)),
             child: ListView(
               children: [
                 Column(
@@ -88,9 +97,9 @@ class _MyHomePage extends State<MyHomePage> {
           floatingActionButton: FloatingActionButton(
             onPressed: () => _openTaskInputModal(context),
             child: Icon(Icons.add),
+            backgroundColor: Colors.red[400],
           ),
-          floatingActionButtonLocation:
-              FloatingActionButtonLocation.centerFloat),
+          floatingActionButtonLocation: FloatingActionButtonLocation.endFloat),
     );
   }
 }

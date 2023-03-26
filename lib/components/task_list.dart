@@ -16,7 +16,7 @@ class _TaskListState extends State<TaskList> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 300,
+      height: 500,
       padding: EdgeInsets.all(10),
       child: ListView.builder(
         itemCount: widget.taskList.length,
@@ -28,14 +28,6 @@ class _TaskListState extends State<TaskList> {
             child: Container(
               padding: EdgeInsets.all(10),
               decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 5,
-                    blurRadius: 7,
-                    offset: Offset(0, 3),
-                  ),
-                ],
                 color: const Color.fromRGBO(255, 255, 255, 1),
                 borderRadius: const BorderRadius.all(
                   Radius.circular(10),
@@ -47,15 +39,16 @@ class _TaskListState extends State<TaskList> {
                   Text(
                     task.title,
                     style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
-                    ),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        color: Color.fromRGBO(34, 34, 34, 1)),
                   ),
                   Text(
                     task.desc,
                     style: TextStyle(
-                      color: Color.fromRGBO(133, 130, 131, 1),
-                    ),
+                        color: Color.fromRGBO(133, 130, 131, 1),
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400),
                   ),
                 ],
               ),
