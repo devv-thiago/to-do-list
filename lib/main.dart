@@ -60,24 +60,30 @@ class _MyHomePage extends State<MyHomePage> {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    final appBar = AppBar(
+      centerTitle: true,
+      shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(25.0),
+              bottomRight: Radius.circular(25.0))),
+      backgroundColor: Color.fromRGBO(126, 126, 242, 1),
+      title: const Text("Minhas Tarefas"),
+      actions: [
+        IconButton(
+          onPressed: () => _openTaskInputModal(context),
+          icon: Icon(Icons.add),
+        )
+      ],
+    );
+
+    final alturaTela = MediaQuery.of(context).size.height -
+        appBar.preferredSize.height -
+        MediaQuery.of(context).padding.top;
+
     return MaterialApp(
       home: Scaffold(
           extendBodyBehindAppBar: true,
-          appBar: AppBar(
-            centerTitle: true,
-            shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(25.0),
-                    bottomRight: Radius.circular(25.0))),
-            backgroundColor: Color.fromRGBO(126, 126, 242, 1),
-            title: const Text("Minhas Tarefas"),
-            actions: [
-              IconButton(
-                onPressed: () => _openTaskInputModal(context),
-                icon: Icon(Icons.add),
-              )
-            ],
-          ),
+          appBar: appBar,
           body: Container(
             decoration: BoxDecoration(color: Color.fromRGBO(34, 34, 34, 1)),
             child: ListView(
@@ -86,7 +92,10 @@ class _MyHomePage extends State<MyHomePage> {
                   children: [
                     Column(
                       children: [
-                        TaskList(_tasks, _deleteTask),
+                        Container(
+                          height: alturaTela,
+                          child: TaskList(_tasks, _deleteTask),
+                        ),
                       ],
                     )
                   ],
