@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'models/task.dart';
 import 'components/task_list.dart';
 import 'components/task_input.dart';
@@ -13,6 +14,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp],
+    );
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: MyHomePage(),
@@ -53,7 +57,7 @@ class _MyHomePage extends State<MyHomePage> {
     showDialog(
         context: context,
         builder: (_) {
-          return AlertDialog(content: TaskInput(_addTask));
+          return Dialog(child: TaskInput(_addTask));
         });
   }
 
