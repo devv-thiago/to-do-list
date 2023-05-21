@@ -4,20 +4,25 @@ import 'models/task.dart';
 import 'components/task_list.dart';
 import 'components/task_input.dart';
 import 'dart:math';
+import 'services/db.dart';
 
-void main() {
-  runApp(MyApp());
+void main() async {
+  runApp(const MyApp());
+}
+
+class AppData {
+  static final db = DatabaseManager();
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key});
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp],
     );
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: MyHomePage(),
     );
@@ -31,7 +36,26 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePage extends State<MyHomePage> {
-  final List<Task> _tasks = [];
+  late List<Task> _tasks = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _loadTasks();
+  }
+
+  Future<void> _loadTasks() async {
+    final db = AppData.db;
+    List<Map<String, dynamic>> tasks = await db.getRegisters();
+    List<Task> loadedTasks = [];
+    for (var i in tasks) {
+      Task task = Task(id: i['id'].toString(), title: i['title'], desc: i['description']);
+      loadedTasks.add(task);
+    }
+    setState(() {
+      _tasks = loadedTasks;
+    });
+  }
 
   _addTask(String titulo, String descricao) {
     final newTask = Task(
@@ -45,11 +69,15 @@ class _MyHomePage extends State<MyHomePage> {
     });
 
     Navigator.of(context).pop();
+    final db = AppData.db;
+    db.addRegister(titulo, descricao);
   }
 
   _deleteTask(String id) {
     setState(() {
       _tasks.removeWhere((tr) => id == tr.id);
+      final db = AppData.db;
+      db.deleteRegister(id);
     });
   }
 
@@ -70,12 +98,12 @@ class _MyHomePage extends State<MyHomePage> {
           borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(25.0),
               bottomRight: Radius.circular(25.0))),
-      backgroundColor: Color.fromRGBO(126, 126, 242, 1),
+      backgroundColor: const Color.fromRGBO(126, 126, 242, 1),
       title: const Text("Minhas Tarefas"),
       actions: [
         IconButton(
           onPressed: () => _openTaskInputModal(context),
-          icon: Icon(Icons.add),
+          icon: const Icon(Icons.add),
         )
       ],
     );
@@ -89,14 +117,15 @@ class _MyHomePage extends State<MyHomePage> {
           extendBodyBehindAppBar: true,
           appBar: appBar,
           body: Container(
-            decoration: BoxDecoration(color: Color.fromRGBO(34, 34, 34, 1)),
+            decoration:
+                const BoxDecoration(color: Color.fromRGBO(34, 34, 34, 1)),
             child: ListView(
               children: [
                 Column(
                   children: [
                     Column(
                       children: [
-                        Container(
+                        SizedBox(
                           height: alturaTela,
                           child: TaskList(_tasks, _deleteTask),
                         ),
@@ -109,8 +138,8 @@ class _MyHomePage extends State<MyHomePage> {
           ),
           floatingActionButton: FloatingActionButton(
             onPressed: () => _openTaskInputModal(context),
-            child: Icon(Icons.add),
             backgroundColor: Colors.red[400],
+            child: const Icon(Icons.add),
           ),
           floatingActionButtonLocation: FloatingActionButtonLocation.endFloat),
     );

@@ -24,14 +24,14 @@ class TaskList extends StatelessWidget {
             ),
             subtitle: Text(
               task.desc,
-              style: TextStyle(
+              style: const TextStyle(
                   color: Color.fromRGBO(133, 130, 131, 1),
                   fontSize: 16,
                   fontWeight: FontWeight.w400),
             ),
             trailing: IconButton(
               onPressed: () => onRemove(task.id),
-              icon: Icon(Icons.delete),
+              icon: const Icon(Icons.delete),
               color: Colors.red[400],
             ),
           ),

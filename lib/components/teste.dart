@@ -6,6 +6,6 @@ class Teste extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Platform.isIOS ? Container() : SizedBox();
+    return Platform.isIOS ? Container() : const SizedBox();
   }
 }

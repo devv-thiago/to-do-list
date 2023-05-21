@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class TaskInput extends StatefulWidget {
   final void Function(String, String) onSubmit;
 
-  TaskInput(this.onSubmit);
+  const TaskInput(this.onSubmit, {super.key});
 
   @override
   State<TaskInput> createState() => _TaskInputState();
@@ -40,32 +40,32 @@ class _TaskInputState extends State<TaskInput> {
             children: [
               TextField(
                 controller: tituloController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Titulo',
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
               TextField(
                 maxLines: null,
                 maxLength: null,
                 controller: descController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Descricao',
                 ),
                 textAlign: TextAlign.start,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
-              Container(
+              SizedBox(
                 height: 50,
                 width: 200,
                 child: ElevatedButton(
-                  style: ButtonStyle(
+                  style: const ButtonStyle(
                     backgroundColor:
                         MaterialStatePropertyAll(Color.fromRGBO(126, 126, 242, 1)),
                   ),
