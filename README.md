@@ -2,7 +2,7 @@
 ![Dart](https://camo.githubusercontent.com/a0a1ad90011aa02e7e6f32be4998b8843f0884eed20b575c8a2189859550824d/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f646172742d2532333031373543322e7376673f7374796c653d666f722d7468652d6261646765266c6f676f3d64617274266c6f676f436f6c6f723d7768697465)
 ![Flutter](https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white) ![SQLite](https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white)
 
-Este é um projeto de aplicativo de criptomoedas desenvolvido com o objetivo de aprimorar as habilidades de consumo de API em uma aplicação robusta. O aplicativo utiliza a API da CoinGecko para obter informações atualizadas sobre criptomoedas e exibi-las de forma amigável aos usuários. Além disso, o backend do aplicativo é suportado pelo Firebase, uma plataforma de desenvolvimento de aplicativos móveis do Google.
+Este projeto de Lista de Tarefas é uma aplicação simples, mas poderosa, que permite aos usuários criar, visualizar e excluir tarefas de maneira eficiente. Ele oferece uma funcionalidade de armazenamento de dados usando o SQLite, permitindo que as tarefas sejam salvas e recuperadas entre sessões.
 
 ## Funcionalidades Principais
 - **Criação de tarefas:** Os usuários podem criar novas tarefas dentro de sua lista.
