@@ -11,7 +11,9 @@ Este projeto de Lista de Tarefas é uma aplicação simples, mas poderosa, que p
 
 ## Interface do Aplicativo
 
-<img src="https://github.com/devv-thiago/criptoapp/assets/86129372/1fde825e-8cd8-4f22-9dbb-437553f894a0" width="253" />
+<img src="https://github.com/devv-thiago/to-do-list/assets/86129372/1887a5a5-09ea-4997-9a09-91aea355530d" width="260" />
+<img src="https://github.com/devv-thiago/to-do-list/assets/86129372/ebbcb994-ff50-4270-b0cb-b3493db26bae" width="253" />
+<img src="https://github.com/devv-thiago/to-do-list/assets/86129372/6309a351-a293-47b8-b37b-1ea7937d6bae" width="253" />
 
 ## Instalação 
 ### Para desenvolvedores
